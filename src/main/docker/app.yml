@@ -1,0 +1,12 @@
+version: '2'
+services:
+    shopifyapp-app:
+        image: shopifyapp
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://shopifyapp-mysql:3306/shopifyapp?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    shopifyapp-mysql:
+        extends:
+            file: mysql.yml
+            service: shopifyapp-mysql
